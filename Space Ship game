@@ -1,0 +1,329 @@
+//declaring variables
+var box 
+var score=0 
+var star 
+var starImage
+var bg 
+var bgImage
+var meteor1,meteor2,meteor1Image,meteor2Image
+var meteors1,meteors2
+var lives=3
+
+//this function to load images
+function preload(){
+starImage=loadImage("spaceship.png")
+bgImage=loadImage("universe.jpg")
+meteor1Image=loadImage('meteor1.png')
+meteor2Image=loadImage('meteor2.png')
+
+
+}
+
+
+
+
+
+//this function is used to create things and it runs only one time.
+function setup ()
+{
+  createCanvas(1000,700)// width is equal to 1000 and height is 700
+  bg=createSprite(500,500)
+  bg.addImage(bgImage)
+  bg.scale=2
+
+  
+  star=createSprite(500,600,50,50) 
+  star.addImage("star",starImage)
+  star.scale=0.3
+   meteors1= new Group() 
+   meteors2= new Group()     
+  
+  
+  
+}
+//this function is used to display things and it runs for ever
+function draw(){
+  background (bgImage) 
+  
+  if(keyDown("up")){
+  star.y=star.y-8  
+  } 
+  if(keyDown("down")){
+    star.y=star.y+9
+  }
+  if(keyDown("left")){
+    star.x=star.x-8
+  }
+  if(keyDown("right")){
+    star.x=star.x+8
+
+  }
+bg.velocityY=3
+if(bg.y>600)
+{
+  bg.y=100
+}
+spawnMeteors()
+  drawSprites()
+  textSize(25)
+
+  text ("score: "+score , 50,50)
+  text ("life: "+lives , 900,50)
+  if(star.isTouching(meteors1)) {
+    lives=lives-1
+    meteors1.destroy()
+      }
+}
+
+
+function spawnMeteors (){ 
+  if(frameCount%200==0)
+  {
+  x1=Math.round(random(0,1000))
+  x2=Math.round(random(0,1000))
+
+  meteor1=createSprite(x1,0,50,50) 
+  meteor1.addImage("star",meteor1Image)
+  meteor1.scale=0.3
+  meteor2=createSprite(x2,0,50,50) 
+  meteor2.addImage("star",meteor2Image)
+  meteor2.scale=0.3
+  meteor1.velocityY=7
+  meteor2.velocityY=5
+  meteors1.add(meteor1)
+  meteors2.add(meteor2)
+}
+}
+//declaring variables
+var box 
+var score=0 
+var star 
+var starImage
+var bg 
+var bgImage
+var meteor1,meteor2,meteor1Image,meteor2Image
+var meteors1,meteors2
+var lives=3
+var gamever
+var gameOverImage
+
+//this function to load images
+function preload(){
+starImage=loadImage("spaceship.png")
+bgImage=loadImage("spacebg.jpeg")
+meteor1Image=loadImage('meteor1.png')
+meteor2Image=loadImage('meteor2.png')
+gameOverImage = loadImage("gameover.jpeg")
+
+
+}
+
+
+
+
+
+//this function is used to create things and it runs only one time.
+function setup ()
+{
+  createCanvas(1000,700)// width is equal to 1000 and height is 700
+  bg=createSprite(500,500)
+  bg.addImage(bgImage)
+  bg.scale=2
+
+  
+  star=createSprite(500,600,50,50) 
+  star.addImage("star",starImage)
+  star.scale=0.3
+
+  gameover=createSprite(500,350) 
+  gameover.addImage("gameover",gameOverImage)
+  gameover.scale=1
+
+
+   meteors1= new Group() 
+   meteors2= new Group()     
+
+  
+}
+//this function is used to display things and it runs for ever
+function draw(){
+  background (bgImage) 
+  gameover.visible=false
+  
+  if(keyDown("up")){
+  star.y=star.y-8  
+  } 
+  if(keyDown("down")){
+    star.y=star.y+9
+  }
+  if(keyDown("left")){
+    star.x=star.x-8
+  }
+  if(keyDown("right")){
+    star.x=star.x+8
+
+  }
+bg.velocityY=3
+if(bg.y>600)
+{
+  bg.y=100
+}
+spawnMeteors()
+  drawSprites()
+  textSize(30)
+  fill("white")
+  text ("score: "+score , 50,50)
+  text ("life: "+lives , 900,50)
+  if(star.isTouching(meteors1)) {
+    lives=lives-1
+    meteor1.destroy()
+      }
+
+      if(star.isTouching(meteors2)) {
+        lives=lives-1
+        meteor2.destroy()
+          }
+
+          if(lives <=0){
+            gameOver()
+          }
+}
+
+function gameOver(){
+  gameover.visible=true
+}
+
+function spawnMeteors (){ 
+  if(frameCount%200==0)
+  {
+  x1=Math.round(random(0,1000))
+  x2=Math.round(random(0,1000))
+
+  meteor1=createSprite(x1,0,50,50) 
+  meteor1.addImage("star",meteor1Image)
+  meteor1.scale=0.3
+  meteor2=createSprite(x2,0,50,50) 
+  meteor2.addImage("star",meteor2Image)
+  meteor2.scale=0.3
+  meteor1.velocityY=7
+  meteor2.velocityY=5
+  meteors1.add(meteor1)
+  meteors2.add(meteor2)
+}
+}//declaring variables
+var box 
+var score=0 
+var star 
+var starImage
+var bg 
+var bgImage
+var meteor1,meteor2,meteor1Image,meteor2Image
+var meteors1,meteors2
+var lives=3
+var gamever
+var gameOverImage
+
+//this function to load images
+function preload(){
+starImage=loadImage("spaceship.png")
+bgImage=loadImage("spacebg.jpeg")
+meteor1Image=loadImage('meteor1.png')
+meteor2Image=loadImage('meteor2.png')
+gameOverImage = loadImage("gameover.jpeg")
+
+
+}
+
+
+
+
+
+//this function is used to create things and it runs only one time.
+function setup ()
+{
+  createCanvas(1000,700)// width is equal to 1000 and height is 700
+  bg=createSprite(500,500)
+  bg.addImage(bgImage)
+  bg.scale=2
+
+  
+  star=createSprite(500,600,50,50) 
+  star.addImage("star",starImage)
+  star.scale=0.3
+
+  gameover=createSprite(500,350) 
+  gameover.addImage("gameover",gameOverImage)
+  gameover.scale=1
+
+
+   meteors1= new Group() 
+   meteors2= new Group()     
+
+  
+}
+//this function is used to display things and it runs for ever
+function draw(){
+  background (bgImage) 
+  gameover.visible=false
+  
+  if(keyDown("up")){
+  star.y=star.y-8  
+  } 
+  if(keyDown("down")){
+    star.y=star.y+9
+  }
+  if(keyDown("left")){
+    star.x=star.x-8
+  }
+  if(keyDown("right")){
+    star.x=star.x+8
+
+  }
+bg.velocityY=3
+if(bg.y>600)
+{
+  bg.y=100
+}
+spawnMeteors()
+  drawSprites()
+  textSize(30)
+  fill("white")
+  text ("score: "+score , 50,50)
+  text ("life: "+lives , 900,50)
+  if(star.isTouching(meteors1)) {
+    lives=lives-1
+    meteor1.destroy()
+      }
+
+      if(star.isTouching(meteors2)) {
+        lives=lives-1
+        meteor2.destroy()
+          }
+
+          if(lives <=0){
+            gameOver()
+          }
+}
+
+function gameOver(){
+  gameover.visible=true
+}
+
+function spawnMeteors (){ 
+  if(frameCount%200==0)
+  {
+  x1=Math.round(random(0,1000))
+  x2=Math.round(random(0,1000))
+
+  meteor1=createSprite(x1,0,50,50) 
+  meteor1.addImage("star",meteor1Image)
+  meteor1.scale=0.3
+  meteor2=createSprite(x2,0,50,50) 
+  meteor2.addImage("star",meteor2Image)
+  meteor2.scale=0.3
+  meteor1.velocityY=7
+  meteor2.velocityY=5
+  meteors1.add(meteor1)
+  meteors2.add(meteor2)
+}
+}
